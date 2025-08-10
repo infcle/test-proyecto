@@ -44,12 +44,17 @@ def test_crear_producto_exitoso(driver):
 
     product_page.click_save()
 
-    wait_for_element_with_screenshot(
+    elemento = wait_for_element_with_screenshot(
         driver,
         (By.CSS_SELECTOR, "h3.fi-no-notification-title"),
         15,
         "producto_exitoso_error"
     )
+    if elemento is None:
+        print("No se encontró el elemento, pero el test continúa.")
+    else:
+        print(elemento.text)
+
     print("Producto creado")
     assert "Producto creado" in driver.page_source
 

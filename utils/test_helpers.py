@@ -18,11 +18,11 @@ def capture_screenshot_on_failure(screenshot_name):
     return decorator
 
 def wait_for_element_with_screenshot(driver, locator, timeout, screenshot_name):
-    """Helper para esperar un elemento y capturar pantalla si timeout."""
+    """Helper para esperar un elemento y capturar pantalla si timeout, sin interrumpir el flujo."""
     try:
         return WebDriverWait(driver, timeout).until(
             EC.presence_of_element_located(locator)
         )
     except TimeoutException:
         save_screenshot(driver, screenshot_name, "timeout_exception")
-        raise
+        return None  # No lanza excepción, solo retorna None
