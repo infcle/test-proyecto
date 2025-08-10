@@ -25,7 +25,7 @@ def save_screenshot(driver, nameTest, nameFile):
     driver.save_screenshot(filename)
 
 
-def test_valid_login(driver, request):
+def test_valid_login(driver):
     driver.get(config["base_url"] + "/login")
     login_page = LoginPage(driver)
     login_page.enter_username(config["username"])
@@ -35,7 +35,7 @@ def test_valid_login(driver, request):
     assert "Escritorio - control_web" in driver.title
     save_screenshot(driver, "login_exitoso", "pantalla_principal")
 
-def test_invalid_login(driver, request):
+def test_invalid_login(driver):
     driver.get(config["base_url"] + "/login")
     login_page = LoginPage(driver)
     login_page.enter_username("usuario@correo.com")
