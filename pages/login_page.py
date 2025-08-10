@@ -8,12 +8,13 @@ class LoginPage(BasePage):
     LOGIN_BUTTON = (By.TAG_NAME, "button")
 
     def enter_username(self, username):
-        time.sleep(0.5)
+        time.sleep(0.2)
         self.enter_text(self.USERNAME_INPUT, username)
 
     def enter_password(self, password):
-        time.sleep(0.5)
+        time.sleep(0.2)
         self.enter_text(self.PASSWORD_INPUT, password)
 
-    def click_login(self):        
+    def click_login(self):
+        time.sleep(0.2)
         self.click_element(self.LOGIN_BUTTON)
